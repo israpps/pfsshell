@@ -26,3 +26,9 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/subprojects/hdlfs 		${PROJECT_SOURCE_DIR}
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}")
+
+add_compile_options("-Wno-unused-value")
+add_compile_options("-Wno-format")
+add_compile_options("-Wno-format-security")
+add_compile_options("-Wno-unused-function")
+add_compile_options("-Wno-unused-variable")
