@@ -10,6 +10,7 @@ on:
       - "**.build"
       - "**.in"
       - "**.yml"
+      - "**CMakeLists.txt"
   pull_request:
     paths:
       - "**.c"
