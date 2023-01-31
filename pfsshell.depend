@@ -1,0 +1,439 @@
+# depslib dependency file v1.0
+1675167435 source:d:\isr\isr_git\pfsshell\hl.c
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<fcntl.h>
+	"iomanX_port.h"
+
+1675167435 d:\isr\isr_git\pfsshell\iomanx_port.h
+	<stdlib.h>
+	<stdint.h>
+
+1675167435 source:d:\isr\isr_git\pfsshell\host_adapter.c
+	<unistd.h>
+	<fcntl.h>
+	<errno.h>
+	<sys/stat.h>
+	<time.h>
+	<stdio.h>
+	<string.h>
+	<dirent.h>
+	"iomanX_port.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\shell.c
+	<errno.h>
+	<fcntl.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<stdbool.h>
+	"util.h"
+	"iomanX_port.h"
+	"hl.h"
+
+1675167391 d:\isr\isr_git\pfsshell\util.h
+	<stdlib.h>
+
+1675167390 d:\isr\isr_git\pfsshell\hl.h
+
+1675167390 source:d:\isr\isr_git\pfsshell\startup.c
+	"shell.h"
+
+1675167390 d:\isr\isr_git\pfsshell\shell.h
+	<stdio.h>
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\_init.c
+	<stdio.h>
+
+1675167435 source:d:\isr\isr_git\pfsshell\iomanx_adapter.c
+	<errno.h>
+	<fcntl.h>
+	<stdio.h>
+	<string.h>
+	<unistd.h>
+	<stdbool.h>
+	<stddef.h>
+	<fuse.h>
+	"iomanX_port.h"
+
+1675167400 d:\isr\isr_git\pfsshell\external\dokany\dokan_fuse\include\fuse.h
+	"fuse_win.h"
+	"fuse_sem_fix.h"
+	"fuse_common.h"
+	<fcntl.h>
+	<time.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<utime.h>
+	<sys/statvfs.h>
+	"fuse_compat.h"
+
+1675167400 d:\isr\isr_git\pfsshell\external\dokany\dokan_fuse\include\fuse_win.h
+	<time.h>
+	<sys/types.h>
+	<windows.h>
+
+1675167400 d:\isr\isr_git\pfsshell\external\dokany\dokan_fuse\include\fuse_sem_fix.h
+	<semaphore.h>
+
+1675167400 d:\isr\isr_git\pfsshell\external\dokany\dokan_fuse\include\fuse_common.h
+	"fuse_opt.h"
+	<stdint.h>
+	"fuse_common_compat.h"
+
+1675167400 d:\isr\isr_git\pfsshell\external\dokany\dokan_fuse\include\fuse_opt.h
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\apa\irx\hdd.c
+	<stdio.h>
+	<sysclib.h>
+	<loadcore.h>
+	<string.h>
+	<stdlib.h>
+	<atad.h>
+	<dev9.h>
+	<errno.h>
+	<irx.h>
+	<iomanX.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	<libapa.h>
+	"hdd.h"
+	"hdd_fio.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\sysclib.h
+	<string.h>
+	<stdlib.h>
+	<stdint.h>
+	<ctype.h>
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\loadcore.h
+	<irx.h>
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\irx.h
+	"types.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\types.h
+	<sysclib.h>
+	<stddef.h>
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\atad.h
+	<sysclib.h>
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\dev9.h
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\iomanx.h
+	"irx.h"
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\hdd-ioctl.h
+	<sysclib.h>
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\apa\irx\apa-opt.h
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\apa\include\libapa.h
+	<types.h>
+	<hdd-ioctl.h>
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\apa\irx\hdd.h
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\apa\irx\hdd_fio.h
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\apa\irx\hdd_fio.c
+	<stdio.h>
+	<irx.h>
+	<loadcore.h>
+	<sysclib.h>
+	<string.h>
+	<atad.h>
+	<dev9.h>
+	<errno.h>
+	<iomanX.h>
+	<thsemap.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	<libapa.h>
+	"hdd.h"
+	"hdd_fio.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\thsemap.h
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\apa.c
+	<errno.h>
+	<iomanX.h>
+	<sysclib.h>
+	<string.h>
+	<stdio.h>
+	<atad.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\cache.c
+	<errno.h>
+	<iomanX.h>
+	<sysclib.h>
+	<string.h>
+	<stdio.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\free.c
+	<errno.h>
+	<iomanX.h>
+	<sysclib.h>
+	<string.h>
+	<stdio.h>
+	<atad.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\journal.c
+	<errno.h>
+	<iomanX.h>
+	<atad.h>
+	<sysclib.h>
+	<string.h>
+	<stdio.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\misc.c
+	<errno.h>
+	<intrman.h>
+	<cdvdman.h>
+	<sysclib.h>
+	<sysmem.h>
+	<thbase.h>
+	<string.h>
+	<time.h>
+	<stdlib.h>
+	<iomanX.h>
+	<stdio.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\intrman.h
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\include\thbase.h
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\apa\src\password.c
+	<errno.h>
+	<iomanX.h>
+	<atad.h>
+	<sysclib.h>
+	<string.h>
+	<stdio.h>
+	<hdd-ioctl.h>
+	"apa-opt.h"
+	"libapa.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\atad.c
+	<windows.h>
+	<winioctl.h>
+	<fcntl.h>
+	<stdlib.h>
+	<stdint.h>
+	<errno.h>
+	<unistd.h>
+	<stdio.h>
+	<string.h>
+	<sys/disk.h>
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\fakeps2sdk\thsemap.c
+	"types.h"
+	"thsemap.h"
+	<stdlib.h>
+	<fcntl.h>
+	<sys/stat.h>
+	<semaphore.h>
+	<limits.h>
+	<errno.h>
+	<stdio.h>
+	<unistd.h>
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\hdlfs\_init.c
+	<stdio.h>
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\hdlfs\main.c
+	<atad.h>
+	<errno.h>
+	<intrman.h>
+	<iomanX.h>
+	<irx.h>
+	<loadcore.h>
+	<thsemap.h>
+	<stdio.h>
+	<sysclib.h>
+	<types.h>
+	<hdd-ioctl.h>
+	"hdlfs.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\hdlfs\hdlfs.h
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\iomanx\iomanx.c
+	"types.h"
+	"loadcore.h"
+	"sysclib.h"
+	"stdarg.h"
+	"intrman.h"
+	"iomanX.h"
+	"types.h"
+	"errno.h"
+
+1675167390 source:d:\isr\isr_git\pfsshell\subprojects\pfs\_init.c
+	<stdio.h>
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs.c
+	<stdio.h>
+	<sysclib.h>
+	<loadcore.h>
+	<string.h>
+	<stdlib.h>
+	<irx.h>
+	<iomanX.h>
+	<errno.h>
+	<thsemap.h>
+	"pfs-opt.h"
+	"libpfs.h"
+	"pfs.h"
+	"pfs_fio.h"
+	"pfs_fioctl.h"
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs-opt.h
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\pfs\include\libpfs.h
+	<types.h>
+
+1675167390 d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs.h
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs_fio.h
+
+1675167435 d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs_fioctl.h
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs_fio.c
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<errno.h>
+	<iomanX.h>
+	<thsemap.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+	"pfs.h"
+	"pfs_fio.h"
+	"pfs_fioctl.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\irx\pfs_fioctl.c
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<errno.h>
+	<iomanX.h>
+	<thsemap.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+	"pfs.h"
+	"pfs_fio.h"
+	"pfs_fioctl.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\bitmap.c
+	<errno.h>
+	<stdio.h>
+	<limits.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\block.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\blockwrite.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\cache.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\dir.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<iomanX.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\inode.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\journal.c
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\misc.c
+	<errno.h>
+	<stdio.h>
+	<iomanX.h>
+	<intrman.h>
+	<sysmem.h>
+	<sysclib.h>
+	<thbase.h>
+	<cdvdman.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\super.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167435 source:d:\isr\isr_git\pfsshell\subprojects\pfs\src\superwrite.c
+	<errno.h>
+	<stdio.h>
+	<sysclib.h>
+	<string.h>
+	<hdd-ioctl.h>
+	"pfs-opt.h"
+	"libpfs.h"
+
+1675167391 source:d:\isr\isr_git\pfsshell\util.c
+	"util.h"
+
