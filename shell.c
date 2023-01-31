@@ -9,6 +9,12 @@
 #include "iomanX_port.h"
 #include "hl.h"
 
+#ifdef SHELL
+#define QUIT(x) exit(x)
+#else
+#define QUIT(x) return (x)
+#endif // SHELL
+
 typedef struct
 {
     int setup;
@@ -169,7 +175,7 @@ static int do_device(context_t *ctx, int argc, char *argv[])
     if (result < 0) {
         fprintf(stderr, "(!) init_apa: failed with %d (%s)\n", result,
                 strerror(-result));
-        exit(1);
+        QUIT(1);
     }
 
     static const char *pfs_args[] =
@@ -185,7 +191,7 @@ static int do_device(context_t *ctx, int argc, char *argv[])
     if (result < 0) {
         fprintf(stderr, "(!) init_pfs: failed with %d (%s)\n", result,
                 strerror(-result));
-        exit(1);
+        QUIT(1);
     }
 
     /* mandatory */
@@ -193,7 +199,7 @@ static int do_device(context_t *ctx, int argc, char *argv[])
     if (result < 0) {
         fprintf(stderr, "(!) init_hdlfs: failed with %d (%s)\n", result,
                 strerror(-result));
-        exit(1);
+        QUIT(1);
     }
     ctx->setup = 1;
     return (0);
