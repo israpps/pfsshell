@@ -33,10 +33,182 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
+			<Target title="Release exe">
+				<Option output="__bin/Release/pfsshell" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="__bin/Release" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="pfsfuse">
+				<Option output="__bin/Release/pfsshell" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
 		</Build>
-		<Unit filename="main.c">
+		<Compiler>
+			<Add option="-D_FILE_OFFSET_BITS=64" />
+			<Add directory="external/dokany/dokan_fuse/include" />
+			<Add directory="subprojects/apa/include" />
+			<Add directory="subprojects/fakeps2sdk/include" />
+			<Add directory="subprojects/pfs/include" />
+			<Add directory="subprojects/hdlfs" />
+			<Add directory="subprojects/apa/irx" />
+			<Add directory="subprojects/pfs/irx" />
+		</Compiler>
+		<Linker>
+			<Add library="external/dokany/dokan_fuse/build/libdokanfuse2.dll.a" />
+		</Linker>
+		<Unit filename="hl.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="hl.h" />
+		<Unit filename="host_adapter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="iomanX_port.h" />
+		<Unit filename="iomanx_adapter.c">
+			<Option compilerVar="CC" />
+			<Option target="pfsfuse" />
+		</Unit>
+		<Unit filename="shell.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell.h" />
+		<Unit filename="startup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/include/libapa.h" />
+		<Unit filename="subprojects/apa/irx/apa-opt.h" />
+		<Unit filename="subprojects/apa/irx/hdd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/irx/hdd.h" />
+		<Unit filename="subprojects/apa/irx/hdd_fio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/irx/hdd_fio.h" />
+		<Unit filename="subprojects/apa/irx/irx_imports.h" />
+		<Unit filename="subprojects/apa/src/apa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/src/cache.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/src/free.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/src/journal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/src/misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/apa/src/password.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/fakeps2sdk/atad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/fakeps2sdk/include/atad.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/dev9.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/hdd-ioctl.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/intrman.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/iomanX.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/irx.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/loadcore.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/sysclib.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/thbase.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/thsemap.h" />
+		<Unit filename="subprojects/fakeps2sdk/include/types.h" />
+		<Unit filename="subprojects/fakeps2sdk/thsemap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/hdlfs/_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/hdlfs/hdlfs.h" />
+		<Unit filename="subprojects/hdlfs/irx_imports.h" />
+		<Unit filename="subprojects/hdlfs/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/iomanX/iomanX.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/iomanX/irx_imports.h" />
+		<Unit filename="subprojects/pfs/_init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/include/libpfs.h" />
+		<Unit filename="subprojects/pfs/irx/irx_imports.h" />
+		<Unit filename="subprojects/pfs/irx/pfs-opt.h" />
+		<Unit filename="subprojects/pfs/irx/pfs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/irx/pfs.h" />
+		<Unit filename="subprojects/pfs/irx/pfs_fio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/irx/pfs_fio.h" />
+		<Unit filename="subprojects/pfs/irx/pfs_fioctl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/irx/pfs_fioctl.h" />
+		<Unit filename="subprojects/pfs/src/bitmap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/block.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/blockWrite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/cache.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/dir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/inode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/journal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/super.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="subprojects/pfs/src/superWrite.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="util.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

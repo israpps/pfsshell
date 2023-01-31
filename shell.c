@@ -44,7 +44,7 @@ static int check_requirements(context_t *ctx, enum requirements req)
     }
     return (1);
 }
-
+#define NEED_GETLINE
 #ifdef NEED_GETLINE
 size_t getline(char **lineptr, size_t *n, FILE *stream)
 {
