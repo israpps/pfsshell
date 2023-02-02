@@ -37,3 +37,5 @@
 pfsshell
 build-mingw
 build
+build_systems/code-blocks/bin/*
+build_systems/code-blocks/pfsshell.depend

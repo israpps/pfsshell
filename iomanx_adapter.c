@@ -749,6 +749,7 @@ extern void set_atad_device_path(const char *path);
 
 int main(int argc, char *argv[])
 {
+    printf("Welcome to PFSFuse\n");
     int ret;
     struct fuse_args args = FUSE_ARGS_INIT(argc, argv);
 
