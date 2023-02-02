@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="libps2hdd_dll" />
+	<File name="..\..\subprojects\apa\src\apa.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="456" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\hdlfs\hdlfs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="31" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\apa\irx\hdd_fio.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="567" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\fakeps2sdk\include\intrman.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="24" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\shell.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="182" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="49" />
+			<Collapse line="102" />
+			<Collapse line="105" />
+			<Collapse line="146" />
+		</Folding>
+	</File>
+	<File name="..\..\hl.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="817" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\iomanX\iomanX.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1722" topLine="60" />
+		</Cursor>
+		<Folding>
+			<Collapse line="46" />
+			<Collapse line="52" />
+			<Collapse line="72" />
+			<Collapse line="116" />
+			<Collapse line="182" />
+			<Collapse line="194" />
+			<Collapse line="218" />
+			<Collapse line="250" />
+			<Collapse line="271" />
+			<Collapse line="282" />
+			<Collapse line="293" />
+			<Collapse line="307" />
+			<Collapse line="318" />
+			<Collapse line="333" />
+			<Collapse line="362" />
+			<Collapse line="368" />
+			<Collapse line="374" />
+			<Collapse line="400" />
+			<Collapse line="423" />
+			<Collapse line="446" />
+			<Collapse line="483" />
+			<Collapse line="505" />
+			<Collapse line="522" />
+			<Collapse line="534" />
+			<Collapse line="563" />
+			<Collapse line="569" />
+			<Collapse line="575" />
+			<Collapse line="581" />
+			<Collapse line="597" />
+			<Collapse line="613" />
+			<Collapse line="630" />
+			<Collapse line="646" />
+			<Collapse line="652" />
+			<Collapse line="669" />
+		</Folding>
+	</File>
+	<File name="..\..\subprojects\hdlfs\_init.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="22" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\hdlfs\main.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="21925" topLine="551" />
+		</Cursor>
+	</File>
+	<File name="..\..\iomanX_port.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8970" topLine="231" />
+		</Cursor>
+	</File>
+	<File name="..\..\iomanx_adapter.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20605" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="..\..\subprojects\apa\irx\hdd.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="563" topLine="0" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>
