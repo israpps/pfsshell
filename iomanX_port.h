@@ -258,7 +258,7 @@ int iomanX_chstat(const char *name, iox_stat_t *stat, unsigned int statmask);
 int iomanX_format(const char *dev, const char *blockdev, void *arg, int arglen);
 
 /* The newer calls - these are NOT supported by the older IOMAN.  */
-int iomanX_rename(const char *old, const char *new);
+int iomanX_rename(const char *old, const char *niuw);
 int iomanX_chdir(const char *name);
 int iomanX_sync(const char *dev, int flag);
 int iomanX_mount(const char *fsname, const char *devname, int flag, void *arg, int arglen);

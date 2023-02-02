@@ -10,9 +10,8 @@
 #include <types.h>
 
 #include <hdd-ioctl.h>
-
+#include "DPRINTF.h"
 #include "hdlfs.h"
-
 #define MODNAME "hdl_filesystem_driver"
 IRX_ID(MODNAME, 0x01, 0x02);
 
@@ -51,11 +50,13 @@ static int unmount(unsigned int unit);
 
 static int hdlfs_init(iop_device_t *fd)
 {
-    unsigned int i;
+    DPRINTF("%s: \n", __FUNCTION__);
+    unsigned int i = 0;
     iop_sema_t sema;
 
     memset(FD_List, 0, sizeof(FD_List));
     for (i = 0; i < MAX_AVAILABLE_FDs; i++) {
+        DPRINTF("sema %d\n", i);
         FD_List[i].MountFD = -1;
         sema.attr = sema.option = 0;
         sema.initial = sema.max = 1;
@@ -67,6 +68,7 @@ static int hdlfs_init(iop_device_t *fd)
 
 static int hdlfs_deinit(iop_device_t *fd)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     unsigned int i;
 
     for (i = 0; i < MAX_AVAILABLE_FDs; i++) {
@@ -82,6 +84,7 @@ static int hdlfs_deinit(iop_device_t *fd)
 
 static int hdlfs_format(iop_file_t *fd, const char *device, const char *blockdev, void *args, int arglen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int PartitionFD, result;
     unsigned int i, MaxSectorsPerPart, NumReservedSectors, NumberOfSectors, SectorNumber, SectorsInPart, SectorsRemaining;
     hdl_game_info HDLFilesystemData;
@@ -154,6 +157,7 @@ static int hdlfs_format(iop_file_t *fd, const char *device, const char *blockdev
 
 static int hdlfs_open(iop_file_t *fd, const char *path, int flags, int mode)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int result;
 
     if (fd->unit < MAX_AVAILABLE_FDs && FD_List[fd->unit].MountFD >= 0) {
@@ -167,11 +171,13 @@ static int hdlfs_open(iop_file_t *fd, const char *path, int flags, int mode)
 
 static int hdlfs_close(iop_file_t *fd)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return 0;
 }
 
 static int hdlfs_io_internal(iop_file_t *fd, void *buffer, int size, int mode)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     hddIoctl2Transfer_t CmdData;
     struct HDLFS_FileDescriptor *hdlfs_fd;
     unsigned int SectorsToRead, SectorsRemaining, ReservedSectors, SectorsRemainingInPartition;
@@ -232,16 +238,19 @@ static int hdlfs_io_internal(iop_file_t *fd, void *buffer, int size, int mode)
 
 static int hdlfs_read(iop_file_t *fd, void *buffer, int size)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return ((fd->mode & O_RDONLY) ? hdlfs_io_internal(fd, buffer, size, ATA_DIR_READ) : -EINVAL);
 }
 
 static int hdlfs_write(iop_file_t *fd, void *buffer, int size)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return ((fd->mode & O_WRONLY) ? hdlfs_io_internal(fd, buffer, size, ATA_DIR_WRITE) : -EROFS);
 }
 
 static int hdlfs_lseek(iop_file_t *fd, int offset, int whence)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     unsigned int i;
     struct HDLFS_FileDescriptor *hdl_fd;
     int result;
@@ -281,16 +290,19 @@ static int hdlfs_lseek(iop_file_t *fd, int offset, int whence)
 
 static int hdlfs_dopen(iop_file_t *fd, const char *path)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return 0;
 }
 
 static int hdlfs_dclose(iop_file_t *fd)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return 0;
 }
 
 static int hdlfs_getstat_filler(int unit, const char *path, iox_stat_t *stat, char *GameTitleOut, unsigned int MaxTitleLen, char *StartupPathOut, unsigned int MaxStartupPathLen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int PartFD, result;
     hdl_game_info HDLGameInfo;
     unsigned int i;
@@ -338,16 +350,19 @@ static int hdlfs_getstat_filler(int unit, const char *path, iox_stat_t *stat, ch
 
 static int hdlfs_dread(iop_file_t *fd, iox_dirent_t *dirent)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return 0;
 }
 
 static int hdlfs_getstat(iop_file_t *fd, const char *path, iox_stat_t *stat)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return hdlfs_getstat_filler(fd->unit, path, stat, NULL, 0, NULL, 0);
 }
 
 static int hdlfs_chstat(iop_file_t *fd, const char *path, iox_stat_t *stat, unsigned int flags)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int PartFD, result;
     hdl_game_info HDLGameInfo;
 
@@ -390,6 +405,7 @@ static int hdlfs_chstat(iop_file_t *fd, const char *path, iox_stat_t *stat, unsi
 /* Here, mount the specified partition/device. */
 static int hdlfs_mount(iop_file_t *fd, const char *mountpoint, const char *blockdev, int flags, void *arg, int arglen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iox_stat_t stat;
     hdl_game_info HDLGameInfo;
     int result;
@@ -433,6 +449,7 @@ static int hdlfs_mount(iop_file_t *fd, const char *mountpoint, const char *block
 
 static int unmount(unsigned int unit)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int result;
 
     if (unit < MAX_AVAILABLE_FDs && FD_List[unit].MountFD >= 0) {
@@ -453,11 +470,13 @@ static int unmount(unsigned int unit)
 
 static int hdlfs_umount(iop_file_t *fd, const char *mountpoint)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return unmount(fd->unit);
 }
 
 static inline int hdlfs_UpdateGameTitle(int unit, const char *NewName, unsigned int len)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int result, PartFD;
     hdl_game_info HDLGameInfo;
 
@@ -480,6 +499,7 @@ static inline int hdlfs_UpdateGameTitle(int unit, const char *NewName, unsigned 
 
 static int hdlfs_devctl(iop_file_t *fd, const char *path, int cmd, void *arg, unsigned int arglen, void *buf, unsigned int buflen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int result;
 
     if (fd->unit < MAX_AVAILABLE_FDs && FD_List[fd->unit].MountFD >= 0) {
@@ -504,6 +524,7 @@ static int hdlfs_devctl(iop_file_t *fd, const char *path, int cmd, void *arg, un
 
 static int hdlfs_NulldevFunction(void)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return -EIO;
 }
 
@@ -551,6 +572,7 @@ static iop_device_t hdlfs_dev = {
 /* Entry point */
 int __start(int argc, char **argv)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     DelDrv(hdlfs_dev_name);
     AddDrv(&hdlfs_dev);
 

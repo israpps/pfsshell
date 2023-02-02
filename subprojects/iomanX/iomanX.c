@@ -9,6 +9,7 @@
 # Review ps2sdk README & LICENSE files for further details.
 */
 
+#include "DPRINTF.h"
 /**
  * @file
  * Advanced I/O library.
@@ -44,11 +45,13 @@ extern int unhook_ioman();
 
 iop_device_t **GetDeviceList(void)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return (dev_list);
 }
 
 int __start(int argc, char **argv)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     if (RegisterLibraryEntries(&_exp_iomanx) != 0) {
         return MODULE_NO_RESIDENT_END;
     }
@@ -68,6 +71,7 @@ int __start(int argc, char **argv)
 
 int shutdown()
 {
+    DPRINTF("%s: \n", __FUNCTION__);
 #if 0
     unhook_ioman();
 #endif
@@ -76,14 +80,17 @@ int shutdown()
 
 int AddDrv(iop_device_t *device)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int i, res = -1;
     int oldIntr;
-
     CpuSuspendIntr(&oldIntr);
 
     for (i = 0; i < MAX_DEVICES; i++) {
         if (dev_list[i] == NULL)
-            break;
+            {
+                DPRINTF("%s: %d is null\n", __FUNCTION__, i);
+                break;
+            }
     }
 
     if (i >= MAX_DEVICES) {
@@ -95,21 +102,26 @@ int AddDrv(iop_device_t *device)
     CpuResumeIntr(oldIntr);
 
     FlushIcache();
-
+    DPRINTF("calling device->ops->init(device)\n");
     if ((res = device->ops->init(device)) < 0) {
+        DPRINTF("failed %d", res);
         dev_list[i] = NULL;
         return (-1);
     }
+    DPRINTF("sucess %d", res);
 
     return (0);
 }
 
 int DelDrv(const char *name)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int i;
 
     for (i = 0; i < MAX_DEVICES; i++) {
+        DPRINTF("%s: %d\n", __FUNCTION__, i);
         if (dev_list[i] != NULL && !strcmp(name, dev_list[i]->name)) {
+            DPRINTF("%sFound? (%d)\n", __FUNCTION__, i);
             dev_list[i]->ops->deinit(dev_list[i]);
             dev_list[i] = NULL;
             return 0;
@@ -122,6 +134,7 @@ int DelDrv(const char *name)
 
 static char *find_iop_device(const char *dev, int *unit, iop_device_t **device)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     char canon[16];
     char *filename, *tail, *d = (char *)dev;
     int i, len, num = 0;
@@ -168,6 +181,7 @@ static char *find_iop_device(const char *dev, int *unit, iop_device_t **device)
 
 iop_file_t *get_file(int fd)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     if (fd >= MAX_FILES)
         return NULL;
 
@@ -179,6 +193,7 @@ iop_file_t *get_file(int fd)
 
 iop_file_t *get_new_file(void)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int i;
     iop_file_t *fd = NULL;
     int oldIntr;
@@ -202,6 +217,7 @@ iop_file_t *get_new_file(void)
 
 int open(const char *name, int flags, ...)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_new_file();
     char *filename;
     va_list alist;
@@ -233,6 +249,7 @@ int open(const char *name, int flags, ...)
 
 int close(int fd)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f;
     int res;
 
@@ -253,6 +270,7 @@ int close(int fd)
 
 int read(int fd, void *ptr, int size)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
 
     if (f == NULL || !(f->mode & O_RDONLY))
@@ -263,6 +281,7 @@ int read(int fd, void *ptr, int size)
 
 int write(int fd, void *ptr, int size)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
 
     if (f == NULL || !(f->mode & O_WRONLY))
@@ -273,6 +292,7 @@ int write(int fd, void *ptr, int size)
 
 int lseek(int fd, int offset, int whence)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
 
     if (f == NULL)
@@ -286,6 +306,7 @@ int lseek(int fd, int offset, int whence)
 
 int ioctl(int fd, int cmd, void *arg)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
 
     if (f == NULL)
@@ -296,6 +317,7 @@ int ioctl(int fd, int cmd, void *arg)
 
 int remove(const char *name)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -310,6 +332,7 @@ int remove(const char *name)
    handle all of them.  */
 static int path_common(const char *name, int arg, int code)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     iop_device_ops_t *dops;
     char *filename;
@@ -338,16 +361,19 @@ static int path_common(const char *name, int arg, int code)
 
 int mkdir(const char *name, int mode)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return path_common(name, mode, 4);
 }
 
 int rmdir(const char *name)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return path_common(name, 0, 5);
 }
 
 int dopen(const char *name)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_new_file();
     char *filename;
     int res;
@@ -373,6 +399,7 @@ int dopen(const char *name)
 
 int mode2modex(int mode)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int modex = 0;
 
     if (FIO_SO_ISLNK(mode))
@@ -395,6 +422,7 @@ int mode2modex(int mode)
 
 int modex2mode(int modex)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     int mode = 0;
 
     if (FIO_S_ISLNK(modex))
@@ -417,6 +445,7 @@ int modex2mode(int modex)
 
 int dread(int fd, iox_dirent_t *iox_dirent)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
     int res;
 
@@ -453,6 +482,7 @@ int dread(int fd, iox_dirent_t *iox_dirent)
 
 int getstat(const char *name, iox_stat_t *stat)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
     int res;
@@ -474,6 +504,7 @@ int getstat(const char *name, iox_stat_t *stat)
 
 int chstat(const char *name, iox_stat_t *stat, unsigned int mask)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -490,6 +521,7 @@ int chstat(const char *name, iox_stat_t *stat, unsigned int mask)
 
 int format(const char *dev, const char *blockdev, void *arg, int arglen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -499,19 +531,20 @@ int format(const char *dev, const char *blockdev, void *arg, int arglen)
     return file.device->ops->format(&file, filename, blockdev, arg, arglen);
 }
 
-static int link_common(const char *old, const char *new, int code)
+static int link_common(const char *old, const char *niuw, int code)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     iop_device_t *new_device;
-    char *filename, *new_filename = (char *)new;
+    char *filename, *new_filename = (char *)niuw;
     int new_unit;
 
     if ((filename = find_iop_device(old, &file.unit, &file.device)) == (char *)-1)
         return -ENODEV;
 
     /* Make sure the user isn't attempting to link across devices.  */
-    if (index(new, ':') != NULL) {
-        new_filename = find_iop_device(new, &new_unit, &new_device);
+    if (index(niuw, ':') != NULL) {
+        new_filename = find_iop_device(niuw, &new_unit, &new_device);
         if ((new_filename == (char *)-1) || (new_unit != file.unit) ||
             (new_device != file.device))
             return -ENXIO;
@@ -527,23 +560,27 @@ static int link_common(const char *old, const char *new, int code)
     return file.device->ops->symlink(&file, filename, new_filename);
 }
 
-int rename(const char *old, const char *new)
+int rename(const char *old, const char *niuw)
 {
-    return link_common(old, new, 7);
+    DPRINTF("%s: \n", __FUNCTION__);
+    return link_common(old, niuw, 7);
 }
 
 int chdir(const char *name)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return path_common(name, 0, 0x103);
 }
 
 int sync(const char *dev, int flag)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     return path_common(dev, flag, 0x106);
 }
 
 int mount(const char *fsname, const char *devname, int flag, void *arg, int arglen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -559,6 +596,7 @@ int mount(const char *fsname, const char *devname, int flag, void *arg, int argl
 
 int umount(const char *fsname)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -574,6 +612,7 @@ int umount(const char *fsname)
 
 s64 lseek64(int fd, s64 offset, int whence)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f = get_file(fd);
 
     if (f == NULL)
@@ -590,6 +629,7 @@ s64 lseek64(int fd, s64 offset, int whence)
 
 int devctl(const char *name, int cmd, void *arg, unsigned int arglen, void *buf, unsigned int buflen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -603,13 +643,15 @@ int devctl(const char *name, int cmd, void *arg, unsigned int arglen, void *buf,
     return file.device->ops->devctl(&file, filename, cmd, arg, arglen, buf, buflen);
 }
 
-int symlink(const char *old, const char *new)
+int symlink(const char *old, const char *niuw)
 {
-    return link_common(old, new, 8);
+    DPRINTF("%s: \n", __FUNCTION__);
+    return link_common(old, niuw, 8);
 }
 
 int readlink(const char *name, char *buf, unsigned int buflen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t file;
     char *filename;
 
@@ -626,6 +668,7 @@ int readlink(const char *name, char *buf, unsigned int buflen)
 
 int ioctl2(int fd, int command, void *arg, unsigned int arglen, void *buf, unsigned int buflen)
 {
+    DPRINTF("%s: \n", __FUNCTION__);
     iop_file_t *f;
 
     if ((f = get_file(fd)) == NULL)
